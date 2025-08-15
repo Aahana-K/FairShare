@@ -17,6 +17,7 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.metrics import mean_squared_error
 
 
+
 from torch.utils.data import DataLoader, TensorDataset
 import torch.nn.functional as F
 
@@ -86,7 +87,7 @@ optimizer= torch.optim.Adam(fairPredAI.parameters(),lr=0.005,weight_decay=1e-6)
 
 print('MODEL CREATEDDDD')
 
-epochs = 150
+epochs = 10
 fairPredAI.train()
 
 lossFunc = torch.nn.MSELoss()
@@ -112,7 +113,7 @@ fieldCategories = fieldE.categories_[0].tolist()
 levelCategories = levelE.categories_[0].tolist()
 sizeCategories = sizeE.categories_[0].tolist()
 countryCategories = countryE.categories_[0].tolist()
-
+'''
 with open('degreeCategories.json','w')as f:
     json.dump(degreeCategories,f)
 with open('fieldCategories.json','w')as f:
@@ -125,3 +126,10 @@ with open('countryCategories.json','w')as f:
     json.dump(countryCategories,f)
 
 torch.save(fairPredAI.state_dict(),os.path.join(pAth,'fairPredAI'))
+'''
+
+joblib.dump(degreeE,os.path.join(pAth,'codedDegree.pkl'))
+joblib.dump(fieldE,os.path.join(pAth,'codedField.pkl'))
+joblib.dump(levelE,os.path.join(pAth,'codedLevel.pkl'))
+joblib.dump(sizeE,os.path.join(pAth,'codedSize.pkl'))
+joblib.dump(countryE,os.path.join(pAth,'codedCountry.pkl'))

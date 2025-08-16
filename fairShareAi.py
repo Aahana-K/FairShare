@@ -135,5 +135,9 @@ with open('sizeCategories.json','w')as f:
     json.dump(sizeCategories,f)
 with open('countryCategories.json','w')as f:
     json.dump(countryCategories,f)
-'''
 
+
+
+
+
+'''

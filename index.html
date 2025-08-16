@@ -13,26 +13,38 @@
     <nav class="navbar">
         <div class = "logo">Fair Share</div>
         <ul class="navLinks">
-            <li><a href = 'form.html'>Form</a></li>
+            <li><a href = 'form.html'>SalaryHelp</a></li>
+
             <li><a href = 'index.html'>Home</a></li>
         </ul>
     </nav>
-</body>
+
 
     <img src = "canvas (41).png" alt="Bottom Image" class="bottomImage">
     <br>
     <br>
-    <br>
-    <br>
+
     <br>
 
-    <p class = "textLightestB">ON AVERAGE A WOMEN</p>
+    <p class = "textLightestB">ON AVERAGE WOMEN</p>
     <p class = "textLightB">MAKES ONLY 80%</p>
     <p class = "textMedB">OF WHAT A MAN MAKES</p>
     <p class = "textDarkB">Let us help you achieve your</p>
     <p class = "textPink">FAIR SHARE</p>
     <p class = "textWhite">made by women for women</p>
 
+</body>
+<script>
+    for (let i=0;i<100;i++){
+        const star=document.createElement('div');
+        star.classList.add('star');
+        star.style.top = Math.random()*window.innerHeight+'px';
+        star.style.left = Math.random()*window.innerWidth+'px';
+        star.style.animationDuration = 1+Math.random()*5+'s';
+        document.body.appendChild(star);
+    }
+</script>
 
 </html>
+
 

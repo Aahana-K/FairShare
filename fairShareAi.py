@@ -31,7 +31,7 @@ print("stufff importd")
 
 pAth = os.path.dirname(os.path.abspath(__file__))
 
-data=pd.read_csv(os.path.join(pAth,'mens_salaries.csv'))
+data=pd.read_csv(os.path.join(pAth,'mens_salaries_updated.csv'))
 
 degreeE = OneHotEncoder(sparse_output=False)
 fieldE = OneHotEncoder(sparse_output=False)
@@ -87,7 +87,7 @@ optimizer= torch.optim.Adam(fairPredAI.parameters(),lr=0.005,weight_decay=1e-6)
 
 print('MODEL CREATEDDDD')
 
-epochs = 10
+epochs = 150
 fairPredAI.train()
 
 lossFunc = torch.nn.MSELoss()
@@ -114,6 +114,17 @@ levelCategories = levelE.categories_[0].tolist()
 sizeCategories = sizeE.categories_[0].tolist()
 countryCategories = countryE.categories_[0].tolist()
 '''
+joblib.dump(degreeE,os.path.join(pAth,'codedDegree.pkl'))
+joblib.dump(fieldE,os.path.join(pAth,'codedField.pkl'))
+joblib.dump(levelE,os.path.join(pAth,'codedLevel.pkl'))
+joblib.dump(sizeE,os.path.join(pAth,'codedSize.pkl'))
+joblib.dump(countryE,os.path.join(pAth,'codedCountry.pkl'))
+'''
+torch.save(fairPredAI.state_dict(),os.path.join(pAth,'fairPredAI.pth'))
+
+'''
+torch.save(fairPredAI.state_dict(),os.path.join(pAth,'fairPredAI'))
+
 with open('degreeCategories.json','w')as f:
     json.dump(degreeCategories,f)
 with open('fieldCategories.json','w')as f:
@@ -124,12 +135,5 @@ with open('sizeCategories.json','w')as f:
     json.dump(sizeCategories,f)
 with open('countryCategories.json','w')as f:
     json.dump(countryCategories,f)
-
-torch.save(fairPredAI.state_dict(),os.path.join(pAth,'fairPredAI'))
 '''
 
-joblib.dump(degreeE,os.path.join(pAth,'codedDegree.pkl'))
-joblib.dump(fieldE,os.path.join(pAth,'codedField.pkl'))
-joblib.dump(levelE,os.path.join(pAth,'codedLevel.pkl'))
-joblib.dump(sizeE,os.path.join(pAth,'codedSize.pkl'))
-joblib.dump(countryE,os.path.join(pAth,'codedCountry.pkl'))

@@ -7,6 +7,7 @@ body{
     padding-left: 20px;
     padding-right: 20px;
     padding-top: 20px;
+    box-sizing: border-box;
 }
 
 .navbar{
@@ -48,12 +49,67 @@ body{
     font-weight:bold;
 }
 
+
 .logo{
     font-family: 'Montserrat', sans-serif;
     font: weight 700px;
     font-size: 20px;
     color:white;
+
 }
+
+
+/*
+#tooltip{
+    position: relative;
+    cursor: pointer;
+    padding: 7px;
+    font-size: 20;
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+#tooltip span:after{
+    content:'';
+    position:absolute;
+    left: 50%;
+    bottom:0%;
+    transform: translateX(-50%);
+    border:solid 10px;
+}
+#tooltipText{
+    position:absolute;
+    left:50%;
+    top:0;
+    transform:translateX(-50%);
+    background-color:rgb(122, 128, 135);
+    color: white;
+    white-space:nowrap;
+    padding:10px 15px;
+    border-radius:8px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+
+#tooltipText::before{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom:100%;
+    transform:translateX(-50%);
+    border: 15px solid;
+    border-color:  rgb(122, 128, 135)rgb(122, 128, 135)rgb(122, 128, 135)rgb(122, 128, 135)rgb(122, 128, 135);
+}
+
+#tooltip:hover #tooltipText{
+    bottom:0;
+    visibility: visible;
+    opacity:1;
+}
+*/
 
 input.pretty{
     font-family: 'Montserrat', sans-serif;
@@ -134,9 +190,9 @@ input.pretty:hover{
 .bottomImage{
     position:fixed;
     bottom:0;
-    left:30%;
+    left:37%;
     transform: translateX(0%);
-    width: 925px;
+    width: 750px;
     z-index: 1000;
     pointer-events: none;
 }
@@ -177,4 +233,46 @@ input.pretty:hover{
     color:rgb(255, 255, 255);
     font-size:26px;
     font-weight:400;
+}
+
+.star{
+    position: absolute;/*meaning it will be ignored by other elements*/
+    width:3px;
+    height:3px;
+    background-color:white;
+    border-radius: 50%;
+    border-color:white;
+    opacity:0;
+    animation: twinkle 2s infinite;
+    pointer-events:none;
+    z-index:0;
+}
+
+@keyframes twinkle{
+    0%, 100%{opacity:0;}
+    50%{opacity:1}
+}
+
+#myText{
+    opacity:0;
+    transition:opacity 2s;
+    width: 255px;
+    position:relative;
+    display:inline-block;
+    padding:10px;
+    font-family:'Montserrat',sans-serif;
+    position: fixed;
+    bottom: 10px;
+    left:50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+@keyframes fadeIn{
+    from { opacity: 0;}
+    to {opacity: 1;}
+}
+
+.fadeINN{
+    animation: fadeIn 0.8s;
 }

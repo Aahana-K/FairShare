@@ -5,6 +5,8 @@ body{
     color:white;
     font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
 }
 
 .navbar{
@@ -13,7 +15,7 @@ body{
     background-color: rgb(35, 30, 59);
     justify-content: space-between;
     border: 1px solid rgb(35, 30, 59);
-    border-radius:15px;
+    border-radius:25px;
     z-index:1000;
     padding:10px 20px;
 }
@@ -35,7 +37,7 @@ body{
 }
 
 .navLinks li{
-    margin-left:20px
+    margin-right:20px
 }
 .navLinks a{
     text-decoration: none;
@@ -44,6 +46,13 @@ body{
 }
 .navLinks a:hover{
     font-weight:bold;
+}
+
+.logo{
+    font-family: 'Montserrat', sans-serif;
+    font: weight 700px;
+    font-size: 20px;
+    color:white;
 }
 
 input.pretty{
@@ -98,4 +107,74 @@ button.submit{
     display:flex;
     gap:45px;
     justify-content: center;
+}
+
+button.subBtn:hover{
+    background-color: white;
+    color:black;
+    border:10px solid white;
+}
+
+button.subBtn:active{
+    scale: 0.95;
+}
+
+button.submit:hover{
+    background-color: white;
+    color:black;
+    border:1px solid white;
+}
+
+input.pretty:hover{
+    background-color: white;
+    color:black;
+    border:1px solid white;
+}
+
+.bottomImage{
+    position:fixed;
+    bottom:0;
+    left:30%;
+    transform: translateX(0%);
+    width: 925px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.textLightestB{
+    margin:0;
+    color:rgb(201, 218, 248);
+    font-size:34px;
+    font-weight:700;
+}
+.textLightB{
+    margin:0;
+    color:rgb(164, 194, 244);
+    font-size:34px;
+    font-weight:700;
+}
+.textMedB{
+    margin:0;
+    color:rgb(109, 158, 235);
+    font-size:34px;
+    font-weight:700;
+}
+.textDarkB{
+    margin:0;
+    color:rgb(60, 120, 216);
+    font-size:24px;
+    font-weight:700;
+}
+.textPink{
+    margin:0;
+    color:rgb(234, 105, 178);
+    font-size:69px;
+    font-weight:700;
+}
+
+.textWhite{
+    margin:0;
+    color:rgb(255, 255, 255);
+    font-size:26px;
+    font-weight:400;
 }

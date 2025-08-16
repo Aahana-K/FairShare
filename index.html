@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8">
+    <title>Fair Share</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <script>
+    userInputs = {
+        "degree":null,
+        'hours_daily':null,
+        'field':null,
+        'job_level':null,
+        'yrs_experience':null,
+        'company_size':null,
+        'country':null,
+    }
+
+    function getCategories(filename,storelist){
+        fetch(filename)
+        .then(category => category.json())
+        .then(categories =>{
+            storelist.length = 0
+            categories.forEach(category=>{
+                storelist.push(category)
+            })
+        })
+    }
+    const degreeC = [];
+    const fieldC = [];
+    const levelC = [];
+    const sizeC = [];
+    const countryC = [];
+
+    getCategories('degreeCategories.json',degreeC)
+    getCategories('fieldCategories.json',fieldC)
+    getCategories('levelCategories.json',levelC)
+    getCategories('sizeCategories.json',sizeC)
+    getCategories('countryCategories.json',countryC)
+    const pattern = new RegExp("^\\d+$");
+
+    function validation(sendID,inputID,category,yayM,alertM){
+        let value = null;
+        document.getElementById(sendID).addEventListener("click",function(){
+           const userInput = document.getElementById(inputID).value.trim();
+           if (!pattern.test(userInput)){
+                alert(alertM);
+                document.getElementById(inputID).value="";
+                value = null;
+            }
+           else{
+                alert(yayM+userInput);
+                userInputs[category] = userInput;
+           }
+
+        })
+    }
+
+    function isInList(sendID,inputID,category,yayM,alertM,cList){
+        document.getElementById(sendID).addEventListener("click",function(){
+            const userInput = document.getElementById(inputID).value.trim();
+            if (!cList.includes(userInput)){
+                alert(alertM+cList)
+                document.getElementById(inputID).value=""
+            }
+            else{
+                alert(yayM+userInput)
+                userInputs[category] = userInput
+            }
+        })
+    }
+    </script>
+
+<br>
+<div>
+        <label for="inDegree">Degree:</label>
+        <input class ="pretty" type = "text" id = "inDegree" placeholder="Type Here">
+        <button class = 'subBtn' id = "subDegree">↑</button>
+
+        <script>
+            isInList('subDegree','inDegree','degree','YAY your degree is saved as ','Invalid, please check spelling and capitals!',degreeC)
+        </script>
+
+        <label for="inField">Field:</label>
+        <input class ="pretty" type = "text" id = "inField" placeholder="Type Here">
+        <button class = 'subBtn' id = "subField">↑</button>
+
+        <script>
+            isInList('subField','inField','field','YAY your field is saved as ','Invalid, please check spelling and capitals!',fieldC)
+        </script>
+</div>
+
+<br>
+<div>
+        <label for="inLevel">Job Level:</label>
+        <input class ="pretty" type = "text" id = "inLevel" placeholder="Type Here">
+        <button class = 'subBtn' id = "subLevel">↑</button>
+
+        <script>
+            isInList('subLevel','inLevel','job_level','YAY your job level is saved as ','Invalid, please check spelling and capitals!',levelC)
+        </script>
+
+        <label for="inSize">Company Size:</label>
+        <input class ="pretty" type = "text" id = "inSize" placeholder="Type Here">
+        <button class = 'subBtn' id = "subSize">↑</button>
+
+        <script>
+            isInList('subSize','inSize','company_size','YAY your company size is saved as ','Invalid, please check spelling and capitals!',sizeC)
+        </script>
+</div>
+
+<br>
+<div>
+        <label for="inCountry">Job Level:</label>
+        <input class ="pretty" type = "text" id = "inCountry" placeholder="Type Here">
+        <button class = 'subBtn' id = "subCountry">↑</button>
+
+        <script>
+            isInList('subCountry','inCountry','country','YAY your country is saved as ','Invalid, please check spelling and capitals!',countryC)
+        </script>
+
+        <label for="inHours">Hours working daily:</label>
+        <input class ="pretty" type = "text" id = "inHours" placeholder="Type Here">
+        <button class = 'subBtn' id = "subHours">↑</button>
+
+        <script>
+        validation('subHours','inHours','hours_daily',"YAY your hours working daily is saved as ",'Invalid, please check spelling and capitals!')
+        </script>
+</div>
+
+
+<br>
+<div>
+        <label for="inYears">Years of Experience:</label>
+        <input class ="pretty" type = "text" id = "inYears" placeholder="Type Here">
+        <button class = 'subBtn' id = "subYears">↑</button>
+
+        <script>
+            validation('subYears','inYears','yrs_experience',"YAY your years of experience is saved as ",'Invalid, please check spelling and capitals!')
+        </script>
+
+        <button class = "submit" id="submit">Submit</button>
+
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+    document.getElementById('submit').addEventListener("click",function(){
+        console.log(JSON.stringify(userInputs,null,2))
+        let counter = 0;
+        for (let key in userInputs){
+            if (userInputs[key]!=null){
+                counter+=1
+            }
+        }
+        console.log("dictionary num of filled spots"+counter);
+        if (counter == 7){
+            fetch('http://localhost:5000/predict',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json'
+                },
+                body:JSON.stringify({
+                    userInputs:[userInputs]
+                })
+            })
+            .then(unReadableResult => unReadableResult.json())
+            .then(codedResult=>{
+                
+                alert("Your predicted grade is "+codedResult.prediction);
+            })
+        } else{
+            alert("Please fill out all the questions!")
+        }
+    })
+
+})
+</script>
+        
+</div>
+</body>
+</html>

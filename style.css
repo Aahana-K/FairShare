@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+body{
+    background-color: rgb(15, 7, 50);
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 20px;
+}
+
+.navbar{
+    display:flex;
+    text-align: right;
+    background-color: rgb(24, 17, 56);
+    justify-content: space-between;
+    border: 1px solid rgb(24, 17, 56);
+    border-radius:15px;
+    z-index:1000;
+    padding:10px 20px;
+}
+
+.navbar a{
+    color:white;
+    font-family: 'Montserrat',sans-serif;
+    font-size: 20px;
+    padding-right:10px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.navLinks{
+    list-style: none;
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+}
+
+.navLinks li{
+    margin-left:20px
+}
+.navLinks a{
+    text-decoration: none;
+    color:white;
+    padding: 8px;
+}
+.navLinks a:hover{
+    font-weight:bold;
+}
+
+input.pretty{
+    font-family: 'Montserrat', sans-serif;
+    align-self: center;
+    background-color: rgb(122, 128, 135);
+    border:1px solid rgb(122, 128, 135);
+    border-radius: 18px;
+    padding: 10px;
+    color:white;
+}
+
+button.subBtn{
+    background-color: rgb(122, 128, 135);
+    border:10px solid rgb(122, 128, 135);
+    border-radius: 50%;
+    color:white;
+}
+
+.pretty::before{
+    font-family: 'Montserrat', sans-serif;
+    content: attr(tLabel);
+    position:absolute;
+    top:-20px;
+    left:2px;
+    color:white;
+    font-size:15px;
+}
+
+button.submit{
+    font-family: 'Montserrat', sans-serif;
+    align-self: center;
+    background-color: rgb(122, 128, 135);
+    border:1px solid rgb(122, 128, 135);
+    border-radius: 18px;
+    padding: 10px;
+    color:white;
+}

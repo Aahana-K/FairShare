@@ -97,11 +97,10 @@ def predict():
         print("HII")
         print(prediction)
         '''
-        pprediction = [round(p) for p in pprediction]
+        #pprediction = [round(p) for p in pprediction]
         return jsonify({"prediction":pprediction})
     except Exception as e:
         return jsonify({"error":str(e)})
     
 if __name__ == "__main__":
     appp.run(debug=True, use_reloader = False)
-

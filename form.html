@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@
     <nav class="navbar">
         <div class = "logo">Fair Share</div>
         <ul class="navLinks">
-            <li><a href = 'form.html'>Form</a></li>
+            <li><a href = 'form.html'>SalaryHelp</a></li>
             <li><a href = 'index.html'>Home</a></li>
         </ul>
     </nav>
@@ -196,7 +199,7 @@ document.addEventListener("DOMContentLoaded",function(){
             })
             .then(unReadableResult => unReadableResult.json())
             .then(codedResult=>{
-                
+            
                 alert("Your predicted salary is "+codedResult.prediction);
             })
         } else{
@@ -205,6 +208,16 @@ document.addEventListener("DOMContentLoaded",function(){
     })
 
 })
+</script>
+<script>
+    for (let i=0;i<100;i++){
+        const star=document.createElement('div');
+        star.classList.add('star');
+        star.style.top = Math.random()*window.innerHeight+'px';
+        star.style.left = Math.random()*window.innerWidth+'px';
+        star.style.animationDuration = 1+Math.random()*5+'s';
+        document.body.appendChild(star);
+    }
 </script>
         
 </div>

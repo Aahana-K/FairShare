@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <ul class="navLinks">
+            <li><a href = 'form.html'>Form</a></li>
+            <li><a href = 'index.html'>Home</a></li>
+        </ul>
+    </nav>
     <script>
     userInputs = {
         "degree":null,
@@ -72,75 +78,95 @@
     }
     </script>
 
-<br>
-<div>
-        <label for="inDegree">Degree:</label>
-        <input class ="pretty" type = "text" id = "inDegree" placeholder="Type Here">
-        <button class = 'subBtn' id = "subDegree">↑</button>
 
+<div>   
+    <br>
+    <br>
+    <div class = 'makeRow'>
+        <div class = "labelAbove" tLabel = "Degree:">
+            <input class ="pretty" type = "text" id = "inDegree" placeholder="Type Here">
+            <button class = 'subBtn' id = "subDegree">↑</button>
+        </div>
         <script>
             isInList('subDegree','inDegree','degree','YAY your degree is saved as ','Invalid, please check spelling and capitals!',degreeC)
         </script>
+        <div class = "labelAbove" tLabel = "Field:">
 
-        <label for="inField">Field:</label>
         <input class ="pretty" type = "text" id = "inField" placeholder="Type Here">
         <button class = 'subBtn' id = "subField">↑</button>
-
+        </div>
+    </div>
         <script>
             isInList('subField','inField','field','YAY your field is saved as ','Invalid, please check spelling and capitals!',fieldC)
         </script>
 </div>
 
 <br>
-<div>
-        <label for="inLevel">Job Level:</label>
-        <input class ="pretty" type = "text" id = "inLevel" placeholder="Type Here">
-        <button class = 'subBtn' id = "subLevel">↑</button>
+<br>
 
+
+<div>
+    <div class = 'makeRow'>
+        <div class = "labelAbove" tLabel = "Job Level:">
+            <input class ="pretty" type = "text" id = "inLevel" placeholder="Type Here">
+            <button class = 'subBtn' id = "subLevel">↑</button>
+        </div>
         <script>
             isInList('subLevel','inLevel','job_level','YAY your job level is saved as ','Invalid, please check spelling and capitals!',levelC)
         </script>
 
-        <label for="inSize">Company Size:</label>
-        <input class ="pretty" type = "text" id = "inSize" placeholder="Type Here">
-        <button class = 'subBtn' id = "subSize">↑</button>
+        <div class = "labelAbove" tLabel = "Company Size:">
 
+            <input class ="pretty" type = "text" id = "inSize" placeholder="Type Here">
+            <button class = 'subBtn' id = "subSize">↑</button>
+        </div>
+    </div>
         <script>
             isInList('subSize','inSize','company_size','YAY your company size is saved as ','Invalid, please check spelling and capitals!',sizeC)
         </script>
 </div>
 
 <br>
+<br>
+
+
 <div>
-        <label for="inCountry">Job Level:</label>
-        <input class ="pretty" type = "text" id = "inCountry" placeholder="Type Here">
-        <button class = 'subBtn' id = "subCountry">↑</button>
-
-        <script>
-            isInList('subCountry','inCountry','country','YAY your country is saved as ','Invalid, please check spelling and capitals!',countryC)
-        </script>
-
-        <label for="inHours">Hours working daily:</label>
-        <input class ="pretty" type = "text" id = "inHours" placeholder="Type Here">
-        <button class = 'subBtn' id = "subHours">↑</button>
-
+    <div class = 'makeRow'>
+        <div class = "labelAbove" tLabel = "Country:">
+            <input class ="pretty" type = "text" id = "inCountry" placeholder="Type Here">
+            <button class = 'subBtn' id = "subCountry">↑</button>
+        </div>
+            <script>
+                isInList('subCountry','inCountry','country','YAY your country is saved as ','Invalid, please check spelling and capitals!',countryC)
+            </script>
+    
+        <div class = "labelAbove" tLabel = "Hours working daily:">
+            <input class ="pretty" type = "text" id = "inHours" placeholder="Type Here">
+            <button class = 'subBtn' id = "subHours">↑</button>
+        </div>
         <script>
         validation('subHours','inHours','hours_daily',"YAY your hours working daily is saved as ",'Invalid, please check spelling and capitals!')
         </script>
+    </div>
 </div>
 
-
 <br>
+<br>
+
 <div>
-        <label for="inYears">Years of Experience:</label>
+    <div class = 'makeRow'>
+        <div class = "labelAbove" tLabel = "Years of experience:">
         <input class ="pretty" type = "text" id = "inYears" placeholder="Type Here">
         <button class = 'subBtn' id = "subYears">↑</button>
+        </div>
 
         <script>
             validation('subYears','inYears','yrs_experience',"YAY your years of experience is saved as ",'Invalid, please check spelling and capitals!')
         </script>
 
-        <button class = "submit" id="submit">Submit</button>
+        <button class = "submit" id="submit">SUBMIT</button>
+    </div>
+</div>
 
 <script>
 document.addEventListener("DOMContentLoaded",function(){

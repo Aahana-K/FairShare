@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
 
 body{
-    background-color: rgb(15, 7, 50);
+    background-color: rgb(16, 10, 39);
     color:white;
     font-family: 'Montserrat', sans-serif;
     padding-left: 20px;
@@ -10,9 +10,9 @@ body{
 .navbar{
     display:flex;
     text-align: right;
-    background-color: rgb(24, 17, 56);
+    background-color: rgb(35, 30, 59);
     justify-content: space-between;
-    border: 1px solid rgb(24, 17, 56);
+    border: 1px solid rgb(35, 30, 59);
     border-radius:15px;
     z-index:1000;
     padding:10px 20px;
@@ -54,6 +54,24 @@ input.pretty{
     border-radius: 18px;
     padding: 10px;
     color:white;
+    position:relative;
+}
+.labelAbove{
+    position:relative;
+    display:flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.labelAbove::before{
+    content: attr(tLabel);
+    position:absolute;
+    top:-20px;
+    left: 2px;
+    font-size: 15px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+
 }
 
 button.subBtn{
@@ -63,22 +81,21 @@ button.subBtn{
     color:white;
 }
 
-.pretty::before{
-    font-family: 'Montserrat', sans-serif;
-    content: attr(tLabel);
-    position:absolute;
-    top:-20px;
-    left:2px;
-    color:white;
-    font-size:15px;
-}
+
 
 button.submit{
     font-family: 'Montserrat', sans-serif;
     align-self: center;
-    background-color: rgb(122, 128, 135);
-    border:1px solid rgb(122, 128, 135);
+    background-color: rgb(59, 61, 63);
+    border:1px solid rgb(59, 61, 63);
     border-radius: 18px;
     padding: 10px;
     color:white;
+    width: 230px;
+}
+
+.makeRow{
+    display:flex;
+    gap:45px;
+    justify-content: center;
 }

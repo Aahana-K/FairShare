@@ -96,7 +96,7 @@
             <button class = 'subBtn' id = "subDegree">↑</button>
         </div>
         <script>
-            isInList('subDegree','inDegree','degree','YAY your degree is saved as ','Invalid, please check spelling and capitals!',degreeC)
+            isInList('subDegree','inDegree','degree','YAY your degree is saved as ','Invalid, please check spelling and capitals! Valid options include: ',degreeC)
         </script>
         <div class = "labelAbove" tLabel = "Field:">
 
@@ -105,7 +105,7 @@
         </div>
     </div>
         <script>
-            isInList('subField','inField','field','YAY your field is saved as ','Invalid, please check spelling and capitals!',fieldC)
+            isInList('subField','inField','field','YAY your field is saved as ','Invalid, please check spelling and capitals! Valid options include: ',fieldC)
         </script>
 </div>
 
@@ -120,7 +120,7 @@
             <button class = 'subBtn' id = "subLevel">↑</button>
         </div>
         <script>
-            isInList('subLevel','inLevel','job_level','YAY your job level is saved as ','Invalid, please check spelling and capitals!',levelC)
+            isInList('subLevel','inLevel','job_level','YAY your job level is saved as ','Invalid, please check spelling and capitals! Valid options include: ',levelC)
         </script>
 
         <div class = "labelAbove" tLabel = "Company Size:">
@@ -130,7 +130,7 @@
         </div>
     </div>
         <script>
-            isInList('subSize','inSize','company_size','YAY your company size is saved as ','Invalid, please check spelling and capitals!',sizeC)
+            isInList('subSize','inSize','company_size','YAY your company size is saved as ','Invalid, please check spelling and capitals! Valid options include: ',sizeC)
         </script>
 </div>
 
@@ -145,7 +145,7 @@
             <button class = 'subBtn' id = "subCountry">↑</button>
         </div>
             <script>
-                isInList('subCountry','inCountry','country','YAY your country is saved as ','Invalid, please check spelling and capitals!',countryC)
+                isInList('subCountry','inCountry','country','YAY your country is saved as ','Invalid, please check spelling and capitals! Valid options include: ',countryC)
             </script>
     
         <div class = "labelAbove" tLabel = "Hours working daily:">
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded",function(){
             .then(unReadableResult => unReadableResult.json())
             .then(codedResult=>{
             
-                alert("Your predicted salary is "+codedResult.prediction);
+                alert("Your predicted salary is "+codedResult.prediction+"usd");
             })
         } else{
             alert("Please fill out all the questions!")

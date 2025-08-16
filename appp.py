@@ -1,3 +1,4 @@
+
 from flask import Flask, request,jsonify
 
 from flask_cors import CORS
@@ -20,6 +21,7 @@ from sklearn.preprocessing import OneHotEncoder
 from torch.utils.data import DataLoader, TensorDataset
 import torch.nn.functional as F
 
+import json
 from torch.autograd import Variable
 import joblib
 import os
@@ -43,15 +45,15 @@ class ANN(nn.Module):
         return(x)
     
 pAth = os.path.dirname(os.path.abspath(__file__))
-cDegree = joblib.load(os.path.join(pAth,'degree'))
-cField = joblib.load(os.path.join(pAth,'field'))
-cLevel = joblib.load(os.path.join(pAth,'job_level'))
-cSize = joblib.load(os.path.join(pAth,'company_size'))
-cCountry = joblib.load(os.path.join(pAth,'country'))
+cDegree = joblib.load(os.path.join(pAth,'codedDegree.pkl'))
+cField = joblib.load(os.path.join(pAth,'codedField.pkl'))
+cLevel = joblib.load(os.path.join(pAth,'codedLevel.pkl'))
+cSize = joblib.load(os.path.join(pAth,'codedSize.pkl'))
+cCountry = joblib.load(os.path.join(pAth,'codedCountry.pkl'))
 
 
 fairPredAI = ANN(inputDim = 38,outputDim=1)
-fairPredAI.load_state_dict(torch.load(os.path.join(pAth,'fairPredAI'),map_location=torch.device('cpu')))
+fairPredAI.load_state_dict(torch.load(os.path.join(pAth,'fairPredAI.pth'),map_location=torch.device('cpu')))
 fairPredAI.eval()
 
 appp = Flask(__name__)
@@ -61,6 +63,7 @@ CORS(appp)
 
 def predict():
     try:
+        print("okayy")
         pulledData = request.get_json()
         print('datapullef')
         data = pd.DataFrame(pulledData['userInputs'])
@@ -70,7 +73,6 @@ def predict():
         trLevel = cLevel.transform(data[['job_level']])
         trSize = cSize.transform(data[['company_size']])
         trCountry = cCountry.transform(data[['country']])
-
         degreeDF= pd.DataFrame(trDegree,columns = cDegree.get_feature_names_out(['degree']))
         fieldDF= pd.DataFrame(trField,columns = cField.get_feature_names_out(['field']))
         countryDF= pd.DataFrame(trCountry,columns = cCountry.get_feature_names_out(['country']))
@@ -83,16 +85,23 @@ def predict():
         for col in numCols:
             fds[col] = fds[col].astype(float)
         x= torch.tensor(fds.values,dtype=torch.float32)
-
+        print("hmm")
         with torch.no_grad():
             prediction = fairPredAI(x)
-        pprediction = prediction.squeeze().tolist()
+        pprediction = prediction.tolist()
+        print(pprediction)
+        '''
         if isinstance(pprediction,float):
             pprediction = [prediction]
+        pprediction = [round(p) for p in pprediction]
+        print("HII")
+        print(prediction)
+        '''
         pprediction = [round(p) for p in pprediction]
         return jsonify({"prediction":pprediction})
     except Exception as e:
         return jsonify({"error":str(e)})
     
-if __name__ == "main":
+if __name__ == "__main__":
     appp.run(debug=True, use_reloader = False)
+
